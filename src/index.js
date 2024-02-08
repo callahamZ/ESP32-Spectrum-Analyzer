@@ -49,6 +49,8 @@ onValue(spektrumData, (snapshot) => {
     spektrumChart.data.datasets[1].data.push(colorData.Green)
     spektrumChart.data.datasets[2].data.push(colorData.Blue)
     spektrumChart.update("none");
+
+    let colorDemoDiv = document.getElementById('colorDemo')
 })
 
 const spektrumChart = new Chart(
