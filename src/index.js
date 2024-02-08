@@ -43,7 +43,6 @@ onValue(spektrumData, (snapshot) => {
 
     colorArr.push(colorData)
 
-    // document.getElementById('intVal').innerText = colorArr.map(obj => )
     console.log(colorArr)
 
     spektrumChart.data.datasets[0].data.push(colorData.Red)
