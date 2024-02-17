@@ -106,13 +106,13 @@ section h2 {
 
 .temperature {
     display: grid;
-    grid-template-rows: 60px;
+    grid-template-rows: 80px;
 }
 
 .sub-temp {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: 150px 250px;
+    grid-template-rows: repeat(3, 80px);
     justify-items: center;
     align-items: center;
 }
@@ -121,10 +121,11 @@ section h2 {
     color: black;
     font-size: 3rem;
     grid-column-start: 2;
+    justify-self: left;
 }
 
 .sub-temp img {
-    height: 180px;
+    height: 250px;
     grid-row-start: 1;
     grid-row-end: 4;
 }
