@@ -17,6 +17,7 @@ const app = initializeApp(firebaseConfig)
 const database = getDatabase(app)
 const spektrumData = ref(database, "sensorSpektrum")
 const tempSensor = ref(database, "sensorSuhu")
+const lightSensor = ref(database, "sensorCahaya")
 
 let colorArr = [];
 let processHolder = 1;
@@ -74,6 +75,14 @@ onValue(tempSensor, (snapshot) => {
     celcius.innerText = suhuCelcius + "° C"
     fahrenheit.innerText = suhuFahrenheit.toFixed(2) + "° F"
     reamur.innerText = suhuReamur.toFixed(2) + "° R"
+})
+
+onValue(lightSensor, (snapshot) => {
+    const luxData = snapshot.val()
+    let lux = luxData.Lux
+
+    let luxText = document.getElementById('luxText')
+    luxText.innerText = lux + " Lux"
 })
 
 const spektrumChart = new Chart(
