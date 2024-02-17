@@ -56,17 +56,23 @@ h1 {
 }
 
 /* ==========================================Canvas================================================= */
-.canvasContainer {
+.dataCard {
     display: flex;
     flex-direction: column;
-    width: 850px;
-    height: 500px;
     background-color: white;
     align-items: left;
     justify-content: center;
     border-radius: 10px;
     padding-left: 30px;
-    margin-top: 90px;
+}
+
+.spectrumGraph {
+    width: 850px;
+    height: 500px;
+}
+
+.spectrumVal {
+    margin-left: 20px;
 }
 
 .chartCanvas {
@@ -74,7 +80,16 @@ h1 {
     background-color: white;
 }
 
-.section1 {
-    margin-left: 350px;
+.dashboard {
+    margin-top: 90px;
+    margin-left: 280px;
+}
+
+.dashboard h2 {
+    color: black;
+}
+
+section {
+    display: flex;
 }
 
