@@ -55,41 +55,69 @@ h1 {
     color: white
 }
 
-/* ==========================================Canvas================================================= */
-.dataCard {
-    display: flex;
-    flex-direction: column;
+/* ==========================================Content================================================= */
+.data-card {
+    display: grid;
     background-color: white;
     align-items: left;
-    justify-content: center;
     border-radius: 10px;
     padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 10px;
 }
 
-.spectrumGraph {
+.spectrum-graph {
     width: 850px;
     height: 500px;
 }
 
-.spectrumVal {
+.spectrum-val {
     margin-left: 20px;
+    width: 300px;
+    display: grid;
 }
 
-.chartCanvas {
+.spectrum-val h1{
+    color: black;
+    font-size: 4rem;
+    padding-top: 10px;
+}
+
+.sub-data {
+    align-content: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+}
+
+.chart-canvas {
     width: 800px;
     background-color: white;
 }
 
-.dashboard {
+section {
     margin-top: 90px;
     margin-left: 280px;
 }
 
-.dashboard h2 {
+section h2 {
     color: black;
 }
 
-section {
-    display: flex;
+.data {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
+/* ==========================================Lain lain================================================= */
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: limegreen;
+}
+
+.blue {
+    background-color: lightskyblue;
+}

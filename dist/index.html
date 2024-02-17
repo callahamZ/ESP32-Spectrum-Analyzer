@@ -23,23 +23,30 @@
       <a href=""><i class="fa-solid fa-circle-info"></i>About</a>
     </div>
 
-    <div class="dashboard">
+    <section>
       <h2>Dashboard</h2>
-      <section>
-      
-
-        <div class="dataCard spectrumGraph">
+      <div class="data">
+        <div class="data-card spectrum-graph">
           <h2>Spectrum Analyzer AS7341</h2>
-          <div class="chartCanvas">
+          <div class="chart-canvas">
             <canvas id="Chart1"></canvas>
           </div>
         </div>
   
-        <div class="dataCard spectrumVal">
-          <h2>350</h2>
+        <div class="data-card spectrum-val">
+          <h2>In Value :</h2>
+          <div class="data-card sub-data red">
+            <h1 id="redVal">0</h1>
+          </div>
+          <div class="data-card sub-data green">
+            <h1 id="greenVal">0</h1>
+          </div>
+          <div class="data-card sub-data blue">
+            <h1 id="blueVal">0</h1>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
     
 
     <script src="bundle.js"></script>

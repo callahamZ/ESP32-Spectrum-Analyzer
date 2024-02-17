@@ -50,7 +50,13 @@ onValue(spektrumData, (snapshot) => {
     spektrumChart.data.datasets[2].data.push(colorData.Blue)
     spektrumChart.update("none");
 
-    let colorDemoDiv = document.getElementById('colorDemo')
+    let redVal = document.getElementById('redVal')
+    let greenVal = document.getElementById('greenVal')
+    let blueVal = document.getElementById('blueVal')
+
+    redVal.innerText = colorData.Red
+    greenVal.innerText = colorData.Green
+    blueVal.innerText = colorData.Blue
 })
 
 const spektrumChart = new Chart(
