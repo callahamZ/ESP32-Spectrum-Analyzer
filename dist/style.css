@@ -129,6 +129,22 @@ section h2 {
     grid-row-start: 1;
     grid-row-end: 4;
 }
+
+.lux {
+    display: grid;
+    grid-template-rows: 80px;
+}
+
+.lux img {
+    width: 150px;
+    justify-self: center;
+}
+
+.lux h1 {
+    color: black;
+    font-size: 3rem;
+    justify-self: center;
+}
 /* ==========================================Lain lain================================================= */
 .span-3 {
     grid-column: span 3;
