@@ -67,37 +67,34 @@ h1 {
 }
 
 .spectrum-graph {
-    width: 850px;
-    height: 500px;
+    
 }
 
 .spectrum-val {
-    margin-left: 20px;
-    width: 300px;
     display: grid;
+    gap: 10px;
 }
 
 .spectrum-val h1{
     color: black;
-    font-size: 4rem;
+    font-size: 3rem;
     padding-top: 10px;
 }
 
 .sub-data {
     align-content: center;
     justify-content: center;
-    width: 200px;
-    height: 100px;
+    width: 140px;
+    height: 4rem;
 }
 
 .chart-canvas {
-    width: 800px;
     background-color: white;
 }
 
 section {
     margin-top: 90px;
-    margin-left: 280px;
+    margin-left: 260px;
 }
 
 section h2 {
@@ -106,10 +103,24 @@ section h2 {
 
 .data {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(2, 1fr);
 }
 
 /* ==========================================Lain lain================================================= */
+.span-3 {
+    grid-column: span 3;
+}
+
+.span-2 {
+    grid-column: span 2;
+}
+
+.row-2 {
+    grid-row: 2;
+}
+
 .red {
     background-color: red;
 }
