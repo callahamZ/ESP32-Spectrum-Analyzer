@@ -8,6 +8,28 @@ h1 {
     color: white;
 }
 
+.headnav {
+    height: 70px;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-color: black;
+    position: fixed;
+    padding-left: 30px;
+}
+
+.navbar {
+    height: 100vh;
+    width: 300px;
+    position: fixed;
+    background-color: white;
+    top: 0;
+    left: 0;
+    margin-top: 70px;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+
 .canvasContainer {
     display: flex;
     width: 900px;
@@ -16,6 +38,7 @@ h1 {
     align-items: center;
     justify-content: center;
     border-radius: 20px;
+    margin-top: 80px;
 }
 
 .chartCanvas {
@@ -27,11 +50,3 @@ h1 {
     margin-left: 350px;
 }
 
-.navbar {
-    height: 100vh;
-    width: 300px;
-    position: fixed;
-    background-color: white;
-    top: 0;
-    left: 0;
-}
