@@ -18,9 +18,22 @@ const database = getDatabase(app)
 const spektrumData = ref(database, "sensorSpektrum")
 const tempSensor = ref(database, "sensorSuhu")
 const lightSensor = ref(database, "sensorCahaya")
+const infoData = ref(database, "Informasi")
 
 let colorArr = [];
 let processHolder = 1;
+
+onValue(infoData, (snapshot) => {
+    const infoConnection = snapshot.val()
+    let ssid = infoConnection.SSID
+    let ipAddr = infoConnection.IP
+
+    let ssidText = document.getElementById("ssid")
+    let ipAddrText = document.getElementById("ipAddr")
+
+    ssidText.innerText = "SSID : " + ssid
+    ipAddrText.innerText = "IP Address : " + ipAddr
+})
 
 onValue(spektrumData, (snapshot) => {
     if (processHolder != 3) {
@@ -33,7 +46,6 @@ onValue(spektrumData, (snapshot) => {
     }
 
     const colorData = snapshot.val()
-    console.log(colorData)
 
     if (colorArr.length == 10) {
         colorArr.shift()
@@ -44,8 +56,6 @@ onValue(spektrumData, (snapshot) => {
     }
 
     colorArr.push(colorData)
-
-    console.log(colorArr)
 
     spektrumChart.data.datasets[0].data.push(colorData.Red)
     spektrumChart.data.datasets[1].data.push(colorData.Green)
