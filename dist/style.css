@@ -15,7 +15,7 @@ h1 {
 /* ========================================NAVBAR============================================= */
 .headnav {
     height: 70px;
-    width: 100vw;
+    width: 100%;
     top: 0;
     left: 0;
     background-color: #4a8fff;
@@ -177,4 +177,48 @@ section h2 {
 
 .blue {
     background-color: lightskyblue;
+}
+
+/* ================================================================================================ */
+/* ================================================================================================== */
+/* ==========================================Responsivity================================================= */
+@media (max-width: 500px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .navbar {
+        display: none;
+    }
+    
+    /* ================================================= */
+    .data-card {
+        width: 98vw;
+    }
+
+    section {
+        margin-left: 0;
+    }
+
+    .data {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+    }
+
+    .sub-data {
+        width: 80vw;
+    }
+
+    /* =================================================== */
+    .span-2 {
+        grid-column: span none;
+    }
+
+    .span-3 {
+        grid-column: span none;
+    }
+
+    .row-2 {
+        grid-row: auto;
+    }
 }
