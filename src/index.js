@@ -1,4 +1,4 @@
-import { Chart } from 'chart.js/auto'
+import { Chart, Colors } from 'chart.js/auto'
 import { rgb } from 'd3'
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, onValue } from 'firebase/database'
@@ -20,7 +20,8 @@ const tempSensor = ref(database, "sensorSuhu")
 const lightSensor = ref(database, "sensorCahaya")
 const infoData = ref(database, "Informasi")
 
-let colorArr = [];
+let spektrumDataArr = [];
+let timeArr = [];
 let processHolder = 1;
 
 onValue(infoData, (snapshot) => {
@@ -47,20 +48,24 @@ onValue(spektrumData, (snapshot) => {
 
     const colorData = snapshot.val()
 
-    if (colorArr.length == 10) {
-        colorArr.shift()
+    if (spektrumDataArr.length == 10) {
+        spektrumDataArr.shift()
 
         spektrumChart.data.datasets[0].data.shift()
         spektrumChart.data.datasets[1].data.shift()
         spektrumChart.data.datasets[2].data.shift()
+
+        spektrumChart.data.labels.shift()
     }
 
-    colorArr.push(colorData)
+    spektrumDataArr.push(colorData)
+
+    spektrumChart.data.labels.push(colorData.infoWaktu)
 
     spektrumChart.data.datasets[0].data.push(colorData.Red)
     spektrumChart.data.datasets[1].data.push(colorData.Green)
     spektrumChart.data.datasets[2].data.push(colorData.Blue)
-    spektrumChart.update("none");
+    spektrumChart.update("none")
 
     let redVal = document.getElementById('redVal')
     let greenVal = document.getElementById('greenVal')
@@ -100,21 +105,21 @@ const spektrumChart = new Chart(
     {
         type: 'line',
         data: {
-            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+            labels: timeArr,
             datasets: [
             {
                 label: 'Red',
-                data: colorArr.map(row => row.Red),
+                data: spektrumDataArr.map(row => row.Red),
                 borderColor: 'rgba(255, 0, 0)'
             },
             {
                 label: 'Green',
-                data: colorArr.map(row => row.Green),
+                data: spektrumDataArr.map(row => row.Green),
                 borderColor: 'rgba(0, 255, 0)'
             },
             {
                 label: 'Blue',
-                data: colorArr.map(row => row.Blue),
+                data: spektrumDataArr.map(row => row.Blue),
                 borderColor: 'rgba(0, 0, 255)'
             }
             ]
