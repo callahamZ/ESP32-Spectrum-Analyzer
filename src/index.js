@@ -21,7 +21,7 @@ const lightSensor = ref(database, "sensorCahaya")
 const infoData = ref(database, "Informasi")
 
 let spektrumDataArr = [];
-let timeArr = [];
+let sumbuX = ["350nm", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "750nm"];
 let processHolder = 1;
 
 onValue(infoData, (snapshot) => {
@@ -37,35 +37,24 @@ onValue(infoData, (snapshot) => {
 })
 
 onValue(spektrumData, (snapshot) => {
-    if (processHolder != 3) {
-        processHolder++
-        return
-    }
-
-    if (processHolder == 3) {
-        processHolder = 1
-    }
-
     const colorData = snapshot.val()
+    // console.log(colorData)
 
-    if (spektrumDataArr.length == 10) {
-        spektrumDataArr.shift()
+    spektrumDataArr = [
+        0,
+        colorData.F1,
+        colorData.F2,
+        colorData.F3,
+        colorData.F4,
+        colorData.F5,
+        colorData.F6,
+        colorData.F7,
+        colorData.F8,
+        0
+    ]
 
-        spektrumChart.data.datasets[0].data.shift()
-        spektrumChart.data.datasets[1].data.shift()
-        spektrumChart.data.datasets[2].data.shift()
-
-        spektrumChart.data.labels.shift()
-    }
-
-    spektrumDataArr.push(colorData)
-
-    spektrumChart.data.labels.push(colorData.infoWaktu)
-
-    spektrumChart.data.datasets[0].data.push(colorData.Red)
-    spektrumChart.data.datasets[1].data.push(colorData.Green)
-    spektrumChart.data.datasets[2].data.push(colorData.Blue)
-    spektrumChart.update("none")
+    spektrumChart.data.datasets[0].data = spektrumDataArr.map(value => parseFloat(value) || 0); // Update the chart data
+    spektrumChart.update();
 
     let redVal = document.getElementById('redVal')
     let greenVal = document.getElementById('greenVal')
@@ -105,25 +94,50 @@ const spektrumChart = new Chart(
     {
         type: 'line',
         data: {
-            labels: timeArr,
+            labels: sumbuX,
             datasets: [
             {
                 label: 'Red',
-                data: spektrumDataArr.map(row => row.Red),
-                borderColor: 'rgba(255, 0, 0)'
-            },
-            {
-                label: 'Green',
-                data: spektrumDataArr.map(row => row.Green),
-                borderColor: 'rgba(0, 255, 0)'
-            },
-            {
-                label: 'Blue',
-                data: spektrumDataArr.map(row => row.Blue),
-                borderColor: 'rgba(0, 0, 255)'
+                data: spektrumDataArr.map(value => parseFloat(value) || 0),
+                borderColor: 'rgba(0, 0, 0)',
+                tension: 0.4,
+                fill: true,
+                backgroundColor: context => {
+                    const chart = context.chart;
+                    const { ctx, chartArea, scales } = chart;
+                
+                    if (!chartArea) {
+                        return null;
+                    }
+                
+                    const gradient = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
+                    gradient.addColorStop(0, 'rgb(111, 47, 159)');
+                    gradient.addColorStop(0.14285714285714285, 'rgb(0, 31, 95)');
+                    gradient.addColorStop(0.2857142857142857, 'rgb(63, 146, 207)');
+                    gradient.addColorStop(0.42857142857142855, 'rgb(0, 175, 239)');
+                    gradient.addColorStop(0.5714285714285714, 'rgb(0, 175, 80)');
+                    gradient.addColorStop(0.7142857142857143, 'rgb(255, 255, 0)');
+                    gradient.addColorStop(0.8571428571428571, 'rgb(247, 149, 70)');
+                    gradient.addColorStop(1, 'rgb(255, 0, 0)');
+                
+                    return gradient;
+                }
             }
             ]
             
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 1000
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
         }
     }
 )
